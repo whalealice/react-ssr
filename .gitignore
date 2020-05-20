@@ -1,0 +1,12 @@
+.idea
+.js.map
+.log
+.Trashes
+.DS_Store
+.vscode
+.cache
+
+static
+node_modules
+lib
+gitignore-analyze.html
