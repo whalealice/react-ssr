@@ -1,7 +1,9 @@
-const Path = require('path')
-const nodeExternals = require('webpack-node-externals')
+const Path = require('path');
+const nodeExternals = require('webpack-node-externals');
+const merge = require('webpack-merge')
 
-module.exports={
+const baseConfig = require('./webpack.base.js')
+const serverConfig = {
     target: 'node', // 告诉webpack我们要打包的是服务器端代码
     mode: 'development',
     entry: './index.js',
@@ -10,16 +12,6 @@ module.exports={
         path: Path.resolve(__dirname, 'build')
     },
     externals: [nodeExternals()],
-    module: {
-        rules: [{
-            test: /\js?$/,
-            loader: 'babel-loader',
-            exclude: /node-module/, // 不包括node-module里面的文件
-            options: {
-                presets: ['react','stage-0', ['env',{
-                    targets: { browsers: ['last 2 versions']} // 兼容最后2个版本
-                }]]
-            },
-        }]
-    }
 }
+
+module.exports = merge(baseConfig, serverConfig)

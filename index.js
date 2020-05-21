@@ -9,19 +9,20 @@ import React from 'react'
 import Home from './src/Home'
 import { renderToString } from  'react-dom/server'
 const app = express();
+app.use(express.static('public')); // 发现加载静态文件就去根目录下的public文件里面找
 
 const Homes = renderToString(<Home/>)
 app.get('/', (request, response) => {
-    response.status(200)
+    // response.status(200)
     response.send(
         `<html>
             <head>
                 <title>react server</title>
             </head>
             <body>
-                <div>
-                    ${Homes}
-                </div>
+                <div id="root">${Homes}</div>
+                <script src="./index.js"></script>
+               
             </body>
         </html>`
     )
