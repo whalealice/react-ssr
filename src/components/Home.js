@@ -1,7 +1,10 @@
 import React from 'react'
+import Header from './common/Header'
 
 const Home = () => {
-    return <div>welcome home2222!!!
+    return <div>
+        <Header/>
+        <div>welcome home1113332222!!!</div>
         <button onClick={()=>{alert('2222')}}>按钮</button>
     </div>
 }

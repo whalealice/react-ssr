@@ -6,7 +6,7 @@ const baseConfig = require('./webpack.base.js')
 const serverConfig = {
     target: 'node', // 告诉webpack我们要打包的是服务器端代码
     mode: 'development',
-    entry: './index.js',
+    entry: './src/server/index.js',
     output: {
         filename: 'bundle.js',
         path: Path.resolve(__dirname, 'build')

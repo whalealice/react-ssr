@@ -6,21 +6,27 @@
 
 import express from 'express'
 import React from 'react'
-import Home from './src/Home'
 import { renderToString } from  'react-dom/server'
+import { StaticRouter } from 'react-router-dom'
+import Routes from '../router'
+
 const app = express();
 app.use(express.static('public')); // 发现加载静态文件就去根目录下的public文件里面找
 
-const Homes = renderToString(<Home/>)
-app.get('/', (request, response) => {
-    // response.status(200)
+// * 所有路由都会走
+app.get('*', (request, response) => {
+    const context = renderToString((
+        <StaticRouter location={request.path} context={{}}>
+            {Routes}
+        </StaticRouter>
+    ))
     response.send(
         `<html>
             <head>
                 <title>react server</title>
             </head>
             <body>
-                <div id="root">${Homes}</div>
+                <div id="root">${context}</div>
                 <script src="./index.js"></script>
                
             </body>
