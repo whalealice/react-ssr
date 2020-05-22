@@ -7,12 +7,10 @@
 * npm i babel-loader babel-core --save
 * npm i webpack-node-externals --save
 * npm i react --save
-* npm install react-dom --save
-* npm i react-router-dom --save
+
 
 ## 项目启动
-npm run start
-npm run build
+npm run dev
 
 ## 自动打包 --watch
 * "build": "webpack --config webpack.server.js --watch"
@@ -56,6 +54,8 @@ npm run build
 * 然后用merge合并两个配置
 
 ## 同构 - 路由
+* npm install react-dom --save
+* npm i react-router-dom --save
 * router.js需要再服务器端执行一遍，客户端也执行一遍；
 * 服务器端路由用StaticRouter，context参数必须要有，可传递一个空对象，数据通讯的传递；
 * BrowserRouter自动感知浏览器当前路径是什么
@@ -65,3 +65,6 @@ npm run build
 * 只在进入页面的第一次执行，之后的路由跳转都是js里面控制的
 
 ## 同构 - redux
+* npm i redux --save
+* npm i react-redux --save
+* npm i react-thunk --save

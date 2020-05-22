@@ -9,16 +9,21 @@ import React from 'react'
 import { renderToString } from  'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
 import Routes from '../router'
+import { Provider } from 'react-redux';
+import getStore from '../store/index'
 
 const app = express();
 app.use(express.static('public')); // 发现加载静态文件就去根目录下的public文件里面找
 
 // * 所有路由都会走
 app.get('*', (request, response) => {
+   
     const context = renderToString((
-        <StaticRouter location={request.path} context={{}}>
-            {Routes}
-        </StaticRouter>
+        <Provider store={getStore()}>
+            <StaticRouter location={request.path} context={{}}>
+                {Routes}
+            </StaticRouter>
+        </Provider>
     ))
     response.send(
         `<html>
