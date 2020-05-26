@@ -1,24 +1,24 @@
 import React from 'react'
-import Header from './common/Header'
+import Header from '../common/Header'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { exchange } from '../store/index'
+import { exchange } from './state/action'
 
 const Home = (props) => {
     console.log('props', props)
+    const {exchange} =props
     return <div>
         <Header/>
         <br/>
         <div>这里是store数据name: {props.name} </div>
-        <div>welcome home1113332222!!!</div>
         <button onClick={()=>{
-            props.exchange()
-        }}>按钮</button>
+            exchange("修改后名字AAA")
+        }}>修改名字</button>
     </div>
 }
 
 const mapStateToProps = (state)=>{
-    return state
+    return state.homeReducer
 }
 const mapDispatchToProps = (dispatch) => {
     const methods = {

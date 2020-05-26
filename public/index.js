@@ -794,27 +794,123 @@ eval("\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/i
 
 /***/ }),
 
-/***/ "./src/components/Home.js":
-/*!********************************!*\
-  !*** ./src/components/Home.js ***!
-  \********************************/
+/***/ "./src/components/Home/Home.js":
+/*!*************************************!*\
+  !*** ./src/components/Home/Home.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Header = __webpack_require__(/*! ./common/Header */ \"./src/components/common/Header.js\");\n\nvar _Header2 = _interopRequireDefault(_Header);\n\nvar _redux = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\n\nvar _index = __webpack_require__(/*! ../store/index */ \"./src/store/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Home = function Home(props) {\n    console.log('props', props);\n    return _react2.default.createElement(\n        'div',\n        null,\n        _react2.default.createElement(_Header2.default, null),\n        _react2.default.createElement('br', null),\n        _react2.default.createElement(\n            'div',\n            null,\n            '\\u8FD9\\u91CC\\u662Fstore\\u6570\\u636Ename: ',\n            props.name,\n            ' '\n        ),\n        _react2.default.createElement(\n            'div',\n            null,\n            'welcome home1113332222!!!'\n        ),\n        _react2.default.createElement(\n            'button',\n            { onClick: function onClick() {\n                    props.exchange();\n                } },\n            '\\u6309\\u94AE'\n        )\n    );\n};\n\nvar mapStateToProps = function mapStateToProps(state) {\n    return state;\n};\nvar mapDispatchToProps = function mapDispatchToProps(dispatch) {\n    var methods = {\n        exchange: _index.exchange\n    };\n    return _extends({}, (0, _redux.bindActionCreators)(methods, dispatch));\n};\nexports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Home);\n\n//# sourceURL=webpack:///./src/components/Home.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Header = __webpack_require__(/*! ../common/Header */ \"./src/components/common/Header.js\");\n\nvar _Header2 = _interopRequireDefault(_Header);\n\nvar _redux = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\n\nvar _action = __webpack_require__(/*! ./state/action */ \"./src/components/Home/state/action.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Home = function Home(props) {\n    console.log('props', props);\n    var exchange = props.exchange;\n\n    return _react2.default.createElement(\n        'div',\n        null,\n        _react2.default.createElement(_Header2.default, null),\n        _react2.default.createElement('br', null),\n        _react2.default.createElement(\n            'div',\n            null,\n            '\\u8FD9\\u91CC\\u662Fstore\\u6570\\u636Ename: ',\n            props.name,\n            ' '\n        ),\n        _react2.default.createElement(\n            'button',\n            { onClick: function onClick() {\n                    exchange(\"修改后名字AAA\");\n                } },\n            '\\u4FEE\\u6539\\u540D\\u5B57'\n        )\n    );\n};\n\nvar mapStateToProps = function mapStateToProps(state) {\n    return state.homeReducer;\n};\nvar mapDispatchToProps = function mapDispatchToProps(dispatch) {\n    var methods = {\n        exchange: _action.exchange\n    };\n    return _extends({}, (0, _redux.bindActionCreators)(methods, dispatch));\n};\nexports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Home);\n\n//# sourceURL=webpack:///./src/components/Home/Home.js?");
 
 /***/ }),
 
-/***/ "./src/components/Login.js":
-/*!*********************************!*\
-  !*** ./src/components/Login.js ***!
-  \*********************************/
+/***/ "./src/components/Home/state/action.js":
+/*!*********************************************!*\
+  !*** ./src/components/Home/state/action.js ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Header = __webpack_require__(/*! ./common/Header */ \"./src/components/common/Header.js\");\n\nvar _Header2 = _interopRequireDefault(_Header);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Login = function Login() {\n    return _react2.default.createElement(\n        'div',\n        null,\n        _react2.default.createElement(_Header2.default, null),\n        _react2.default.createElement(\n            'div',\n            null,\n            'Login'\n        ),\n        _react2.default.createElement(\n            'button',\n            { onClick: function onClick() {\n                    alert('2222');\n                } },\n            'Login'\n        )\n    );\n};\n\nexports.default = Login;\n\n//# sourceURL=webpack:///./src/components/Login.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.exchange = exchange;\nvar GET_NAME = exports.GET_NAME = 'index => change from';\n\nfunction exchange(opts) {\n    return function (dispatch, getState) {\n        dispatch({\n            type: GET_NAME,\n            payload: opts\n        });\n    };\n}\n\n//# sourceURL=webpack:///./src/components/Home/state/action.js?");
+
+/***/ }),
+
+/***/ "./src/components/Home/state/reducer.js":
+/*!**********************************************!*\
+  !*** ./src/components/Home/state/reducer.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.default = homeReducer;\n\nvar _action = __webpack_require__(/*! ./action */ \"./src/components/Home/state/action.js\");\n\nvar createInitialState = function createInitialState() {\n    return {\n        name: 'baifan'\n    };\n};\n\nfunction homeReducer() {\n    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : createInitialState();\n    var action = arguments[1];\n\n    switch (action.type) {\n        case _action.GET_NAME:\n            var _state = JSON.parse(JSON.stringify(state));\n            _state.name = action.payload;\n            console.log('_state', _state);\n            return _state;\n        default:\n            return state;\n    }\n}\n\n//# sourceURL=webpack:///./src/components/Home/state/reducer.js?");
+
+/***/ }),
+
+/***/ "./src/components/Login/ItemAge.js":
+/*!*****************************************!*\
+  !*** ./src/components/Login/ItemAge.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Login = __webpack_require__(/*! ./Login */ \"./src/components/Login/Login.js\");\n\nvar _action = __webpack_require__(/*! ./age/action */ \"./src/components/Login/age/action.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar ItemLogin = function ItemLogin() {\n    var itemContext = (0, _react.useContext)(_Login.ageContext);\n    return _react2.default.createElement(\n        'div',\n        null,\n        _react2.default.createElement(\n            'div',\n            null,\n            '\\u6211\\u662F\\u5B50\\u7EC4\\u4EF6\\u5E74\\u9F84:',\n            itemContext.state.age\n        ),\n        _react2.default.createElement(\n            'button',\n            { onClick: function onClick() {\n                    itemContext.dispatch((0, _action.exchangeAge)(6));\n                } },\n            '\\u5B50\\u7EC4\\u4EF6\\u4FEE\\u6539\\u5E74\\u9F846'\n        )\n    );\n};\n\nexports.default = ItemLogin;\n\n//# sourceURL=webpack:///./src/components/Login/ItemAge.js?");
+
+/***/ }),
+
+/***/ "./src/components/Login/ItemName.js":
+/*!******************************************!*\
+  !*** ./src/components/Login/ItemName.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Login = __webpack_require__(/*! ./Login */ \"./src/components/Login/Login.js\");\n\nvar _action = __webpack_require__(/*! ./name/action */ \"./src/components/Login/name/action.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar ItemLogin = function ItemLogin() {\n    var itemContext = (0, _react.useContext)(_Login.NameContext);\n    return _react2.default.createElement(\n        'div',\n        null,\n        _react2.default.createElement(\n            'div',\n            null,\n            '\\u6211\\u662F\\u5B50\\u7EC4\\u4EF6\\u540D\\u5B57:',\n            itemContext.state.name\n        ),\n        _react2.default.createElement(\n            'button',\n            { onClick: function onClick() {\n                    itemContext.dispatch((0, _action.exchange)('angel'));\n                } },\n            '\\u5B50\\u7EC4\\u4EF6\\u4FEE\\u6539\\u540D\\u5B57'\n        )\n    );\n};\n\nexports.default = ItemLogin;\n\n//# sourceURL=webpack:///./src/components/Login/ItemName.js?");
+
+/***/ }),
+
+/***/ "./src/components/Login/Login.js":
+/*!***************************************!*\
+  !*** ./src/components/Login/Login.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.ageContext = exports.NameContext = undefined;\n\nvar _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i[\"return\"]) _i[\"return\"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError(\"Invalid attempt to destructure non-iterable instance\"); } }; }();\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Header = __webpack_require__(/*! ../common/Header */ \"./src/components/common/Header.js\");\n\nvar _Header2 = _interopRequireDefault(_Header);\n\nvar _ItemName = __webpack_require__(/*! ./ItemName */ \"./src/components/Login/ItemName.js\");\n\nvar _ItemName2 = _interopRequireDefault(_ItemName);\n\nvar _ItemAge = __webpack_require__(/*! ./ItemAge */ \"./src/components/Login/ItemAge.js\");\n\nvar _ItemAge2 = _interopRequireDefault(_ItemAge);\n\nvar _reducer = __webpack_require__(/*! ./name/reducer */ \"./src/components/Login/name/reducer.js\");\n\nvar _reducer2 = _interopRequireDefault(_reducer);\n\nvar _action = __webpack_require__(/*! ./name/action */ \"./src/components/Login/name/action.js\");\n\nvar _reducer3 = __webpack_require__(/*! ./age/reducer */ \"./src/components/Login/age/reducer.js\");\n\nvar _reducer4 = _interopRequireDefault(_reducer3);\n\nvar _action2 = __webpack_require__(/*! ./age/action */ \"./src/components/Login/age/action.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar NameContext = exports.NameContext = (0, _react.createContext)(null);\nvar ageContext = exports.ageContext = (0, _react.createContext)(null);\n\nvar initialState = { count: 0 };\nfunction countReducer(state, action) {\n    switch (action.type) {\n        case 'increment':\n            return { count: state.count + 1 };\n        case 'decrement':\n            return { count: state.count - 1 };\n        default:\n            throw new Error();\n    }\n}\n\nvar Login = function Login() {\n    var _useState = (0, _react.useState)(18),\n        _useState2 = _slicedToArray(_useState, 2),\n        age = _useState2[0],\n        setAge = _useState2[1];\n\n    var _useReducer = (0, _react.useReducer)(countReducer, initialState),\n        _useReducer2 = _slicedToArray(_useReducer, 2),\n        countState = _useReducer2[0],\n        countDispatch = _useReducer2[1];\n\n    var _useReducer3 = (0, _react.useReducer)(_reducer2.default, (0, _reducer.createInitialState)()),\n        _useReducer4 = _slicedToArray(_useReducer3, 2),\n        nameState = _useReducer4[0],\n        nameDispatch = _useReducer4[1];\n\n    var _useReducer5 = (0, _react.useReducer)(_reducer4.default, (0, _reducer3.createOtherInitialState)()),\n        _useReducer6 = _slicedToArray(_useReducer5, 2),\n        ageState = _useReducer6[0],\n        ageDispatch = _useReducer6[1];\n\n    (0, _react.useEffect)(function () {\n        document.title = 'You clicked ' + countState.count + ' times';\n    }, [countState.count]);\n\n    var onChageAge = function onChageAge() {\n        setAge(28);\n    };\n    return _react2.default.createElement(\n        'div',\n        null,\n        _react2.default.createElement(_Header2.default, null),\n        _react2.default.createElement(\n            'div',\n            null,\n            'Login'\n        ),\n        _react2.default.createElement(\n            'div',\n            null,\n            '\\u5E74\\u9F84:',\n            age\n        ),\n        _react2.default.createElement(\n            'button',\n            { onClick: onChageAge },\n            '\\u8BBE\\u7F6E\\u65B0\\u7684\\u5E74\\u9F84'\n        ),\n        _react2.default.createElement('br', null),\n        _react2.default.createElement('br', null),\n        _react2.default.createElement(\n            'div',\n            null,\n            '\\u8BA1\\u6570\\u5668\\uFF1A',\n            countState.count\n        ),\n        _react2.default.createElement(\n            'button',\n            { onClick: function onClick() {\n                    return countDispatch({ type: 'increment' });\n                } },\n            '+'\n        ),\n        _react2.default.createElement(\n            'button',\n            { onClick: function onClick() {\n                    return countDispatch({ type: 'decrement' });\n                } },\n            '-'\n        ),\n        _react2.default.createElement('br', null),\n        _react2.default.createElement('br', null),\n        _react2.default.createElement(\n            'div',\n            null,\n            '\\u540D\\u5B57\\uFF1A',\n            nameState.name\n        ),\n        _react2.default.createElement(\n            'button',\n            { onClick: function onClick() {\n                    nameDispatch((0, _action.exchange)('柏帆'));\n                } },\n            '\\u7236\\u7EC4\\u4EF6\\u4FEE\\u6539\\u540D\\u5B57'\n        ),\n        _react2.default.createElement('br', null),\n        _react2.default.createElement(\n            NameContext.Provider,\n            { value: { state: nameState, dispatch: nameDispatch } },\n            _react2.default.createElement(_ItemName2.default, null)\n        ),\n        _react2.default.createElement('br', null),\n        _react2.default.createElement('br', null),\n        _react2.default.createElement(\n            'div',\n            null,\n            '\\u5E74\\u9F84\\uFF1A',\n            ageState.age\n        ),\n        _react2.default.createElement(\n            'button',\n            { onClick: function onClick() {\n                    ageDispatch((0, _action2.exchangeAge)(8));\n                } },\n            '\\u7236\\u7EC4\\u4EF6\\u4FEE\\u6539\\u5E74\\u9F848'\n        ),\n        _react2.default.createElement('br', null),\n        _react2.default.createElement(\n            ageContext.Provider,\n            { value: { state: ageState, dispatch: ageDispatch } },\n            _react2.default.createElement(_ItemAge2.default, null)\n        )\n    );\n};\n\nexports.default = Login;\n\n//# sourceURL=webpack:///./src/components/Login/Login.js?");
+
+/***/ }),
+
+/***/ "./src/components/Login/age/action.js":
+/*!********************************************!*\
+  !*** ./src/components/Login/age/action.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nvar GET_AGE = exports.GET_AGE = 'index => get age';\n\nvar exchangeAge = exports.exchangeAge = function exchangeAge(count) {\n    return {\n        type: GET_AGE,\n        payload: count\n    };\n};\n\n//# sourceURL=webpack:///./src/components/Login/age/action.js?");
+
+/***/ }),
+
+/***/ "./src/components/Login/age/reducer.js":
+/*!*********************************************!*\
+  !*** ./src/components/Login/age/reducer.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.createOtherInitialState = undefined;\nexports.default = ageReducer;\n\nvar _action = __webpack_require__(/*! ./action */ \"./src/components/Login/age/action.js\");\n\nvar createOtherInitialState = exports.createOtherInitialState = function createOtherInitialState() {\n    return {\n        age: 18\n    };\n};\nfunction ageReducer() {\n    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : createInitialState();\n    var action = arguments[1];\n\n    switch (action.type) {\n        case _action.GET_AGE:\n            var _state = JSON.parse(JSON.stringify(state));\n            _state.age = action.payload;\n            return _state;\n        default:\n            return state;\n    }\n}\n\n//# sourceURL=webpack:///./src/components/Login/age/reducer.js?");
+
+/***/ }),
+
+/***/ "./src/components/Login/name/action.js":
+/*!*********************************************!*\
+  !*** ./src/components/Login/name/action.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nvar GET_NAMES = exports.GET_NAMES = 'index => get names';\n\nvar exchange = exports.exchange = function exchange(count) {\n    return {\n        type: GET_NAMES,\n        payload: count\n    };\n};\n\n//# sourceURL=webpack:///./src/components/Login/name/action.js?");
+
+/***/ }),
+
+/***/ "./src/components/Login/name/reducer.js":
+/*!**********************************************!*\
+  !*** ./src/components/Login/name/reducer.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.createInitialState = undefined;\nexports.default = nameReducer;\n\nvar _action = __webpack_require__(/*! ./action */ \"./src/components/Login/name/action.js\");\n\nvar createInitialState = exports.createInitialState = function createInitialState() {\n    return {\n        name: 'baifan11'\n    };\n};\nfunction nameReducer() {\n    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : createInitialState();\n    var action = arguments[1];\n\n    switch (action.type) {\n        case _action.GET_NAMES:\n            var _state = JSON.parse(JSON.stringify(state));\n            _state.name = action.payload;\n            return _state;\n        default:\n            return state;\n    }\n}\n\n//# sourceURL=webpack:///./src/components/Login/name/reducer.js?");
 
 /***/ }),
 
@@ -826,7 +922,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/esm/react-router-dom.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Header = function Header(props) {\n    return _react2.default.createElement(\n        'div',\n        null,\n        _react2.default.createElement(\n            _reactRouterDom.Link,\n            { to: '/' },\n            'Home'\n        ),\n        _react2.default.createElement(\n            _reactRouterDom.Link,\n            { to: '/login' },\n            'Login'\n        )\n    );\n};\n\nexports.default = Header;\n\n//# sourceURL=webpack:///./src/components/common/Header.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/esm/react-router-dom.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Header = function Header(props) {\n    return _react2.default.createElement(\n        'div',\n        null,\n        _react2.default.createElement(\n            _reactRouterDom.Link,\n            { to: '/' },\n            'Home'\n        ),\n        '  |$',\n        _react2.default.createElement(\n            _reactRouterDom.Link,\n            { to: '/login' },\n            'Login'\n        )\n    );\n};\n\nexports.default = Header;\n\n//# sourceURL=webpack:///./src/components/common/Header.js?");
 
 /***/ }),
 
@@ -838,7 +934,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/esm/react-router-dom.js\");\n\nvar _Home = __webpack_require__(/*! ./components/Home */ \"./src/components/Home.js\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nvar _Login = __webpack_require__(/*! ./components/Login */ \"./src/components/Login.js\");\n\nvar _Login2 = _interopRequireDefault(_Login);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement(_reactRouterDom.Route, { path: '/', exact: true, component: _Home2.default }),\n    _react2.default.createElement(_reactRouterDom.Route, { path: '/login', exact: true, component: _Login2.default })\n);\n\n//# sourceURL=webpack:///./src/router.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/esm/react-router-dom.js\");\n\nvar _Home = __webpack_require__(/*! ./components/Home/Home */ \"./src/components/Home/Home.js\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nvar _Login = __webpack_require__(/*! ./components/Login/Login */ \"./src/components/Login/Login.js\");\n\nvar _Login2 = _interopRequireDefault(_Login);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement(_reactRouterDom.Route, { path: '/', exact: true, component: _Home2.default }),\n    _react2.default.createElement(_reactRouterDom.Route, { path: '/login', exact: true, component: _Login2.default })\n);\n\n//# sourceURL=webpack:///./src/router.js?");
 
 /***/ }),
 
@@ -850,7 +946,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.exchange = exchange;\n\nvar _redux = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n\nvar _reduxThunk = __webpack_require__(/*! redux-thunk */ \"./node_modules/redux-thunk/es/index.js\");\n\nvar _reduxThunk2 = _interopRequireDefault(_reduxThunk);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar GET_NAME = 'index => change from';\n\nvar createInitialState = function createInitialState() {\n    return {\n        name: 'baifan'\n    };\n};\nvar reducer = function reducer() {\n    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : createInitialState();\n    var action = arguments[1];\n\n    switch (action.type) {\n        case GET_NAME:\n            var _state = JSON.parse(JSON.stringify(state));\n            _state.name = action.payload;\n            return _state;\n        default:\n            return state;\n    }\n};\nfunction exchange() {\n    return function (dispatch, getState) {\n        dispatch({\n            type: GET_NAME,\n            payload: '这是修改后的名字'\n        });\n    };\n}\nvar getStore = function getStore() {\n    return (0, _redux.createStore)(reducer, (0, _redux.applyMiddleware)(_reduxThunk2.default));\n};\n\nexports.default = getStore;\n\n//# sourceURL=webpack:///./src/store/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _redux = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n\nvar _reduxThunk = __webpack_require__(/*! redux-thunk */ \"./node_modules/redux-thunk/es/index.js\");\n\nvar _reduxThunk2 = _interopRequireDefault(_reduxThunk);\n\nvar _reducer = __webpack_require__(/*! ./../components/Home/state/reducer */ \"./src/components/Home/state/reducer.js\");\n\nvar _reducer2 = _interopRequireDefault(_reducer);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar reducers = (0, _redux.combineReducers)({\n    homeReducer: _reducer2.default\n});\nvar getStore = function getStore() {\n    return (0, _redux.createStore)(reducers, (0, _redux.applyMiddleware)(_reduxThunk2.default));\n};\n\nexports.default = getStore;\n\n//# sourceURL=webpack:///./src/store/index.js?");
 
 /***/ })
 
