@@ -3,6 +3,7 @@ import { GET_NAME } from './action'
 const createInitialState = () => {
     return {
         name: 'baifan',
+        count: 0,
     }
 }
 

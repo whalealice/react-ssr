@@ -1,8 +1,8 @@
 import React from 'react'
-import Header from '../common/Header'
+import Header from '../../common/Header'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { exchange } from './state/action'
+import { exchange } from '../state/action'
 
 const Home = (props) => {
     console.log('props', props)

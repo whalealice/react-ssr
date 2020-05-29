@@ -31,10 +31,11 @@ const Login = () => {
     const [ageState, ageDispatch] = useReducer(ageReducer, createOtherInitialState());
     useEffect(() => {
         document.title = `You clicked ${countState.count} times`;
+        setAge(countState.count)
     }, [countState.count]);
     
     const onChageAge = ()=>{
-        setAge( 28)
+        setAge(28)
     }
     return <div>
         <Header/>
@@ -63,7 +64,7 @@ const Login = () => {
             ageDispatch(exchangeAge(8))
         }}>父组件修改年龄8</button>
         <br/>
-        <ageContext.Provider value={{state: ageState, dispatch: ageDispatch}}>
+        <ageContext.Provider value={{state: {age}, dispatch: ageDispatch}}>
             <ItemAge/>
         </ageContext.Provider>
     </div>
