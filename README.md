@@ -68,3 +68,8 @@ npm run dev
 * npm i redux --save
 * npm i react-redux --save
 * npm i react-thunk --save
+
+## css-loader
+* npm i style-loader css-loader --save-dev
+* server端module使用 isomorphic-style-loader
+* npm i isomorphic-style-loader --save
