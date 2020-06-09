@@ -5,39 +5,54 @@
 // const Home = require('./src/Home')
 
 import express from 'express'
-import React from 'react'
-import { renderToString } from  'react-dom/server'
-import { StaticRouter } from 'react-router-dom'
-import Routes from '../router'
-import { Provider } from 'react-redux';
-import getStore from '../store/index'
+// import proxy from 'express-http-proxy'
+import { matchRoutes } from "react-router-config";
+import { getStore } from '../store/index'
+import routes from '../router'
+import { render } from './utils'
+
 
 const app = express();
 app.use(express.static('public')); // 发现加载静态文件就去根目录下的public文件里面找
-
+// app.use('/api', proxy('http://47.95.113.63', {
+//     proxyReqPathResolver: function (req) {
+//         console.log('+++++++', req.url)
+//     //   var parts = req.url.split('?');
+//     //   var queryString = parts[1];
+//     //   var updatedPath = parts[0].replace(/test/, 'tent');
+//     //   return updatedPath + (queryString ? '?' + queryString : '');
+//     return `/ssr/api/${req.url}`
+//     }
+//   }));
 // * 所有路由都会走
-app.get('*', (request, response) => {
-   
-    const context = renderToString((
-        <Provider store={getStore()}>
-            <StaticRouter location={request.path} context={{}}>
-                {Routes}
-            </StaticRouter>
-        </Provider>
-    ))
-    response.send(
-        `<html>
-            <head>
-                <title>react server</title>
-            </head>
-            <body>
-                <div id="root">${context}</div>
-                <script src="./index.js"></script>
-               
-            </body>
-        </html>`
-    )
-    // response.end()
+app.get('*', (req, res) => {
+    const store = getStore()
+    // 如果在这里，可以拿到异步数据，并填充到store中
+    // store里面填充什么，需要结合用户请求地址和路由
+    // 如果访问 / 路径，拿到Home组件的异步数据
+    // 如果访问 /login 路径，拿到Login组件的异步数据
+
+    // 根据路由路径，往store里面加数据
+    const _matchRoutes = matchRoutes(routes, req.path)
+    // 问题一：matchRoutes空数组
+    // matchRoutes打印出来两个，第二个是个空数组，这是在请求favicon.ico，在public里面存放给一个favicon.ico即可
+    // 问题二：嵌套路由
+    // 使用react-router-config里面的matchRoutes
+
+    // 让matchRoutes里所有组件对用的loadData都执行一次，并改变store
+    const promises = []
+    _matchRoutes.forEach(item => {
+        if (item.route.loadData) {
+            promises.push(item.route.loadData(store))
+        }
+
+    });
+
+    Promise.all(promises).then(() => {
+        res.send(render(store, routes, req))
+    })
+
+
 });
 
 console.log('node 成功')

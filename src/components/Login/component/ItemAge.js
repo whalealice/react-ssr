@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
-import { ageContext } from './Login';
-import { exchangeAge } from './age/action'
+import { ageContext } from '.';
+import { exchangeAge } from '../age/action'
 
 const ItemLogin = () => {
     const itemContext = useContext(ageContext);

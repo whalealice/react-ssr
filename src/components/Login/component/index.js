@@ -1,12 +1,12 @@
 import React, {createContext, useReducer, useState, useEffect} from 'react'
-import Header from '../common/Header'
+import Header from '../../common/Header'
 import ItemName from './ItemName'
 import ItemAge from './ItemAge'
-import nameReducer, { createInitialState } from './name/reducer'
-import { exchange } from './name/action'
+import nameReducer, { createInitialState } from '../name/reducer'
+import { exchange } from '../name/action'
 
-import ageReducer, { createOtherInitialState } from './age/reducer'
-import { exchangeAge } from './age/action'
+import ageReducer, { createOtherInitialState } from '../age/reducer'
+import { exchangeAge } from '../age/action'
 
 export const NameContext = createContext(null);
 export const ageContext = createContext(null)

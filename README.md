@@ -36,9 +36,9 @@ npm run dev
 * <script src="./index.js"></script> // 客户端再执行一遍react代码
 
 ### express static中间件加载静态文件
-* //将静态文件目录设置为：项目根目录+/public
+* 将静态文件目录设置为：项目根目录+/public
 * app.use(express.static(__dirname + '/public'));
-* //或者
+* 或者
 * app.use(express.static(path.join(__dirname, 'public')));
 
 * app.use(express.static('public')); // 发现加载静态文件就去根目录下的public文件里面找
@@ -68,8 +68,41 @@ npm run dev
 * npm i redux --save
 * npm i react-redux --save
 * npm i react-thunk --save
+* getStore()每次生成一个新的store，这样每个用户的store都是独立的，不会多人共享一个store;
+* componentDidMount()只会在客户端渲染执行，不会再服务端渲染执行，所以componentDidMount里面的请求数据的ajax不会被执行；
+
+## 服务器端store永远是空的 首次进入页面请求数据（Home页面）
+* 1、服务器接收到请求，这个时候store是个空的
+* 2、componentDidMount在服务器端是不执行的，所以列表数据是空的
+* 解决:
+* react-router-config里面的matchRoutes 根据路由路径，往store里面加数据
+
+* 3、客户端代码运行，这个时候store是空的
+* 4、componentDidMount在客户端执行的，列表数据 被获取
+* 5、store中的列表数据被更新
+* 6、客户端渲染出store中list数据对应的列表渲染出来
+
+## 数据的注水和脱水
+* 注水: 把服务端渲染的数据放到window.content
+* 脱水：客户端渲染的时候把数据拿出来直接使用
+
+
 
 ## css-loader
-* npm i style-loader css-loader --save-dev
-* server端module使用 isomorphic-style-loader
-* npm i isomorphic-style-loader --save
+* npm i css-loader --save-dev
+
+* webpack.client.js
+* npm i style-loader --save-dev
+* style-loader 发现页面有这样一个样式，并且这个样式页面有引用，就会往dom上增加这个样式名；
+* style-loader 解析我们要的class名称之外，还会我们写的样式放入到head中；
+
+* webpack.server.js 使用 isomorphic-style-loader
+* npm i isomorphic-style-loader --save-dev  
+* isomorphic-style-loader只是解析我们要的class名称，放入dom字符串中
+
+* 这样页面样式会有抖动，需要做css服务器端渲染
+
+
+
+
+

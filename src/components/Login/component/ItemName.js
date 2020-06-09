@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
-import { NameContext } from './Login';
-import {exchange} from './name/action'
+import { NameContext } from '.';
+import {exchange} from '../name/action'
 
 const ItemLogin = () => {
     const itemContext = useContext(NameContext);

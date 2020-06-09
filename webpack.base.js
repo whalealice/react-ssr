@@ -1,7 +1,7 @@
 module.exports = {
     module: {
         rules: [{
-            test: /\js?$/,
+            test: /\.js?$/,
             loader: 'babel-loader',
             exclude: /node-module/, // 不包括node-module里面的文件
             options: {
