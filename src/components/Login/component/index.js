@@ -1,5 +1,4 @@
 import React, {createContext, useReducer, useState, useEffect} from 'react'
-import Header from '../../common/Header'
 import ItemName from './ItemName'
 import ItemAge from './ItemAge'
 import nameReducer, { createInitialState } from '../name/reducer'
@@ -38,7 +37,6 @@ const Login = () => {
         setAge(28)
     }
     return <div>
-        <Header/>
         <div>Login</div> 
         <div>年龄:{age}</div>
         <button onClick={onChageAge}>设置新的年龄</button>

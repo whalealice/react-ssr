@@ -15,9 +15,11 @@ const createInitialState = () => {
 export default function homeReducer(state = createInitialState(), action) {
     switch (action.type) {
         case GET_NAME:
-            return state.set('name',  action.payload)
-        case GET_HOME_LIST_SUCCESS: 
-                return state.set('homeList',  Immutable.List(action.payload))
+            const newState = Object.assign({}, state, { name: action.payload })
+            return newState
+        case GET_HOME_LIST_SUCCESS:
+            let newList = Object.assign({}, state, { homeList: action.payload })
+            return newList
         default:
             return state
     }

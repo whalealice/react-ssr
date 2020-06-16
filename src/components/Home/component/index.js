@@ -1,6 +1,5 @@
 
 import React, {useState,useEffect} from 'react'
-import Header from '../../common/Header'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { exchange, getHomeList } from '../state/action'
@@ -10,11 +9,10 @@ const Home = (props) => {
    
     const { exchange, getHomeList } = props
     const homeList = props.homeList
-    // useEffect(()=>{
-    //     getHomeList()
-    // }, [])
+    useEffect(()=>{
+        getHomeList()
+    }, [])
     return <div>
-        <Header/>
         <br/>
         <div className={styles.test}>这里是store数据name: {props.name} </div>
         <button onClick={()=>{
@@ -37,7 +35,6 @@ Home.loadData = (store)=>{
 }
 
 const mapStateToProps = (state)=>{
-    console.log('3333', state.homeReducer)
     return {
         name: state.homeReducer.name,
         homeList: state.homeReducer.homeList,

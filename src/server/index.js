@@ -5,7 +5,7 @@
 // const Home = require('./src/Home')
 
 import express from 'express'
-// import proxy from 'express-http-proxy'
+import proxy from 'express-http-proxy'
 import { matchRoutes } from "react-router-config";
 import { getStore } from '../store/index'
 import routes from '../router'
@@ -14,19 +14,15 @@ import { render } from './utils'
 
 const app = express();
 app.use(express.static('public')); // 发现加载静态文件就去根目录下的public文件里面找
-// app.use('/api', proxy('http://47.95.113.63', {
-//     proxyReqPathResolver: function (req) {
-//         console.log('+++++++', req.url)
-//     //   var parts = req.url.split('?');
-//     //   var queryString = parts[1];
-//     //   var updatedPath = parts[0].replace(/test/, 'tent');
-//     //   return updatedPath + (queryString ? '?' + queryString : '');
-//     return `/ssr/api/${req.url}`
-//     }
-//   }));
+app.use('/api', proxy('http://route.showapi.com', {
+    proxyReqPathResolver: function (req) {
+        console.log('+++++++', req.url)
+    return req.url
+    }
+  }));
 // * 所有路由都会走
 app.get('*', (req, res) => {
-    const store = getStore()
+    const store = getStore(req)
     // 如果在这里，可以拿到异步数据，并填充到store中
     // store里面填充什么，需要结合用户请求地址和路由
     // 如果访问 / 路径，拿到Home组件的异步数据

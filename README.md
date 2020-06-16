@@ -86,6 +86,22 @@ npm run dev
 * 注水: 把服务端渲染的数据放到window.content
 * 脱水：客户端渲染的时候把数据拿出来直接使用
 
+## 客户端请求，用node做代理转发给服务器
+* npm i express-http-proxy --save
+
+## axios instance interceptors
+* 服务器请求和客户端请求地址不一样独立配置,
+* http://route.showapi.com/341-2
+* 浏览器运行
+* /api/341-2 = http://localhost:5000/api/341-2
+* 服务器运行
+* /api/341-2 = 服务器根目录下/api/341-2 没有这个文件，始终获取不到
+
+* 创建store的时候传入使用哪一个axios
+* applyMiddleware(thunk.withExtraArgument(serverAxios)
+
+## 多级路由
+* renderRoutes，react-router-config
 
 
 ## css-loader
