@@ -16,8 +16,7 @@ const app = express();
 app.use(express.static('public')); // 发现加载静态文件就去根目录下的public文件里面找
 app.use('/api', proxy('http://route.showapi.com', {
     proxyReqPathResolver: function (req) {
-        console.log('+++++++', req.url)
-    return req.url
+        return req.url
     }
   }));
 // * 所有路由都会走
@@ -39,13 +38,24 @@ app.get('*', (req, res) => {
     const promises = []
     _matchRoutes.forEach(item => {
         if (item.route.loadData) {
-            promises.push(item.route.loadData(store))
+            const promise = new Promise((resolve, reject)=>{
+                item.route.loadData(store).then(resolve).catch(resolve)
+            })
+            promises.push(promise)
         }
 
     });
 
     Promise.all(promises).then(() => {
-        res.send(render(store, routes, req))
+        const context = {}
+       
+        const html = render(store, routes, req, context)
+        if(context.NOT_FOUND){
+            res.status(404)
+            res.send(html)
+        }else{
+            res.send(html)
+        }
     })
 
 

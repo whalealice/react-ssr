@@ -2,16 +2,22 @@
 import React, {useState,useEffect} from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { exchange, getHomeList } from '../state/action'
+import { exchange, getHomeList,changeLogin } from '../state/action'
 import styles from './style.css'
 
 const Home = (props) => {
    
-    const { exchange, getHomeList } = props
+    const { exchange, getHomeList, changeLogin } = props
     const homeList = props.homeList
     useEffect(()=>{
         getHomeList()
     }, [])
+    if(!props.isLogin){
+        return <div>没有数据~！<button onClick={()=>{
+            changeLogin(true)
+        }}>修改login</button></div>
+    }
+    console.log('props',props)
     return <div>
         <br/>
         <div className={styles.test}>这里是store数据name: {props.name} </div>
@@ -27,6 +33,9 @@ const Home = (props) => {
                 </div>
             )
         })}
+        <button onClick={()=>{
+            changeLogin(false)
+        }}>修改login</button>
     </div>
 }
 Home.loadData = (store)=>{
@@ -38,12 +47,14 @@ const mapStateToProps = (state)=>{
     return {
         name: state.homeReducer.name,
         homeList: state.homeReducer.homeList,
+        isLogin: state.homeReducer.isLogin,
     }
 }
 const mapDispatchToProps = (dispatch) => {
     const methods = {
         exchange,
         getHomeList,
+        changeLogin,
     }
     return { ...bindActionCreators(methods, dispatch) }
 }

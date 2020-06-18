@@ -1,5 +1,4 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
-import Immutable  from 'immutable'
 import thunk from 'redux-thunk'
 import { homeReducer } from './../components/Home'
 import clientAxios from '../client/request'
@@ -14,6 +13,5 @@ export const getStore = (req) => {
 
 export const getClientStore = () => {
     const defaultState = window.context.state
-    console.log('defaultState', defaultState)
     return createStore(reducers, defaultState, applyMiddleware(thunk.withExtraArgument(clientAxios)))
 }

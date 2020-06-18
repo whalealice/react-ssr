@@ -5,24 +5,25 @@ import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config'
 
 
-export const render = (store, routes, req) => {
+export const render = (store, routes, req, context) => {
 
-    const context = renderToString((
+    const content = renderToString((
         <Provider store={store}>
-            <StaticRouter location={req.path} context={{}}>
+            <StaticRouter location={req.path} context={context}>
                 <div>
                     {renderRoutes(routes)}
                 </div>
             </StaticRouter>
         </Provider>
     ))
+    console.log('3333', store.getState())
     return (
         `<html>
             <head>
                 <title>react server</title>
             </head>
             <body>
-                <div id="root">${context}</div>
+                <div id="root">${content}</div>
                 <script>
                     window.context = {
                         state: ${JSON.stringify(store.getState())}

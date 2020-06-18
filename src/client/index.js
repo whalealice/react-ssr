@@ -8,7 +8,6 @@ import { Provider } from 'react-redux';
 import { getClientStore }  from '../store/index'
  
 const store = getClientStore()
-console.log('11111', store.getState().homeReducer)
 const App = () => {
     return (
         <Provider store={store}>
