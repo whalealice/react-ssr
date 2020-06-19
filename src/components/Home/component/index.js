@@ -4,12 +4,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { exchange, getHomeList, changeLogin } from '../state/action'
 import styles from './style.css'
-import styleHoc from '../../../styleHoc'
+import withStyles from '../../hooks/withStyles'
 
 const Home = (props) => {
-    if(props.staticContext){
-        props.staticContext.css.push(styles._getCss())
-    }
+    withStyles(props, styles)
     const { exchange, getHomeList, changeLogin } = props
     const homeList = props.homeList 
     useEffect(()=>{
@@ -56,4 +54,4 @@ const mapDispatchToProps = (dispatch) => {
     }
     return { ...bindActionCreators(methods, dispatch) }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Home,styles)
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

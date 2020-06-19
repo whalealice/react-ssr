@@ -8,6 +8,8 @@ import ageReducer, { createOtherInitialState } from '../age/reducer'
 import { exchangeAge } from '../age/action'
 
 import styles from './style.css'
+import withStyles from '../../hooks/withStyles'
+
 export const NameContext = createContext(null);
 export const ageContext = createContext(null)
 
@@ -25,6 +27,7 @@ function countReducer(state, action) {
 }
 
 const Login = (props) => {
+    withStyles(props, styles)
     const [age, setAge] = useState(18)
     const [countState, countDispatch] = useReducer(countReducer, initialState);
     const [nameState, nameDispatch] = useReducer(nameReducer, createInitialState());
@@ -36,9 +39,6 @@ const Login = (props) => {
     
     const onChangeAge = ()=>{
         setAge(28)
-    }
-    if(props.staticContext){
-        props.staticContext.css.push(styles._getCss())
     }
     return <div>
         <div className={styles.test}>Login</div> 
