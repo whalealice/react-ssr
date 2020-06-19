@@ -14,7 +14,6 @@ const createInitialState = () => {
 }
 
 export default function homeReducer(state = createInitialState(), action) {
-    console.log('4444', action.type)
     switch (action.type) {
         case GET_NAME:
             const newState = Object.assign({}, state, { name: action.payload })

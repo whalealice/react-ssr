@@ -7,6 +7,7 @@ import { exchange } from '../name/action'
 import ageReducer, { createOtherInitialState } from '../age/reducer'
 import { exchangeAge } from '../age/action'
 
+import styles from './style.css'
 export const NameContext = createContext(null);
 export const ageContext = createContext(null)
 
@@ -23,7 +24,7 @@ function countReducer(state, action) {
     }
 }
 
-const Login = () => {
+const Login = (props) => {
     const [age, setAge] = useState(18)
     const [countState, countDispatch] = useReducer(countReducer, initialState);
     const [nameState, nameDispatch] = useReducer(nameReducer, createInitialState());
@@ -33,13 +34,16 @@ const Login = () => {
         setAge(countState.count)
     }, [countState.count]);
     
-    const onChageAge = ()=>{
+    const onChangeAge = ()=>{
         setAge(28)
     }
+    if(props.staticContext){
+        props.staticContext.css.push(styles._getCss())
+    }
     return <div>
-        <div>Login</div> 
+        <div className={styles.test}>Login</div> 
         <div>年龄:{age}</div>
-        <button onClick={onChageAge}>设置新的年龄</button>
+        <button onClick={onChangeAge}>设置新的年龄</button>
         <br/>
         <br/>
         <div>计数器：{countState.count}</div>

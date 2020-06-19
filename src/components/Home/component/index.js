@@ -2,22 +2,20 @@
 import React, {useState,useEffect} from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { exchange, getHomeList,changeLogin } from '../state/action'
+import { exchange, getHomeList, changeLogin } from '../state/action'
 import styles from './style.css'
+import styleHoc from '../../../styleHoc'
 
 const Home = (props) => {
-   
+    if(props.staticContext){
+        props.staticContext.css.push(styles._getCss())
+    }
     const { exchange, getHomeList, changeLogin } = props
-    const homeList = props.homeList
+    const homeList = props.homeList 
     useEffect(()=>{
         getHomeList()
     }, [])
-    if(!props.isLogin){
-        return <div>没有数据~！<button onClick={()=>{
-            changeLogin(true)
-        }}>修改login</button></div>
-    }
-    console.log('props',props)
+
     return <div>
         <br/>
         <div className={styles.test}>这里是store数据name: {props.name} </div>
@@ -58,4 +56,4 @@ const mapDispatchToProps = (dispatch) => {
     }
     return { ...bindActionCreators(methods, dispatch) }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Home,styles)

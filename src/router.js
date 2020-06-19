@@ -31,7 +31,7 @@ export default [
                 path:'/login',
                 component: Login,
                 exact: true,
-                // loadData: Home.loadData
+                loadData: Home.loadData, 
                 key: 'login',
             },
             {

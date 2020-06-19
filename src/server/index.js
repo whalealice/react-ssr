@@ -18,7 +18,7 @@ app.use('/api', proxy('http://route.showapi.com', {
     proxyReqPathResolver: function (req) {
         return req.url
     }
-  }));
+}));
 // * 所有路由都会走
 app.get('*', (req, res) => {
     const store = getStore(req)
@@ -35,27 +35,38 @@ app.get('*', (req, res) => {
     // 使用react-router-config里面的matchRoutes
 
     // 让matchRoutes里所有组件对用的loadData都执行一次，并改变store
+   
+
+
+    // 一个页面要加载A,B,C,D四个组件，这四个组件都要服务器加载数据
+    // 假设A组件加载失败
+    // 1、假设B,C,D组件已经加载完成
+    // 2、假设B,C,D组件接口比较慢，没有加载完成就会直接走到catch，这样就会都渲染不出来
     const promises = []
     _matchRoutes.forEach(item => {
         if (item.route.loadData) {
-            const promise = new Promise((resolve, reject)=>{
+            const promise = new Promise((resolve, reject) => {
                 item.route.loadData(store).then(resolve).catch(resolve)
             })
             promises.push(promise)
         }
-
     });
 
     Promise.all(promises).then(() => {
-        const context = {}
-       
+        const context = {css:[]}
         const html = render(store, routes, req, context)
-        if(context.NOT_FOUND){
+        console.log('context',context)
+        if (context.action === 'REPLACE') {
+            res.redirect(301, context.url)
+        } else if (context.NOT_FOUND) {
             res.status(404)
             res.send(html)
-        }else{
+        } else {
             res.send(html)
         }
+    }).catch((err)=>{
+        console.log('err+++++++++', err)
+        res.end('sorry, request error')
     })
 
 

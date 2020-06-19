@@ -116,8 +116,12 @@ npm run dev
 * npm i isomorphic-style-loader --save-dev  
 * isomorphic-style-loader只是解析我们要的class名称，放入dom字符串中
 
-* 这样页面样式会有抖动，需要做css服务器端渲染
-
+### 这样页面样式会有抖动，需要做css服务器端渲染
+* 页面根据staticContext把页面的css样式注入到服务器context对象上
+* 页面在componentWillMount钩子函数中写：if(props.staticContext){props.staticContext.css = styles._getCss()}
+* server端render的时候把拿到的css样式放入到html中，和之前的获取store类似
+### 子组件的服务器端样式渲染
+* react-router-config会把context传入到有些路由的组件，但是子组件是没有路由的所以context需要从父组件传递下去
 
 
 
