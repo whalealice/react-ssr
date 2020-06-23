@@ -1,4 +1,6 @@
-import React, {createContext, useReducer, useState, useEffect} from 'react'
+import React, {createContext, useReducer, useState, useEffect, Fragment} from 'react'
+import { Helmet } from 'react-helmet'
+
 import ItemName from './ItemName'
 import ItemAge from './ItemAge'
 import nameReducer, { createInitialState } from '../name/reducer'
@@ -33,14 +35,18 @@ const Login = (props) => {
     const [nameState, nameDispatch] = useReducer(nameReducer, createInitialState());
     const [ageState, ageDispatch] = useReducer(ageReducer, createOtherInitialState());
     useEffect(() => {
-        document.title = `You clicked ${countState.count} times`;
+        // document.title = `You clicked ${countState.count} times`;
         setAge(countState.count)
     }, [countState.count]);
     
     const onChangeAge = ()=>{
         setAge(28)
     }
-    return <div>
+    return <Fragment>
+        <Helmet>
+            <title>JOJO-丰富多彩的咨询</title>
+            <meta name="description" content="JOJO学习ssr网站-丰富多彩的咨询"/>
+        </Helmet>
         <div className={styles.test}>Login</div> 
         <div>年龄:{age}</div>
         <button onClick={onChangeAge}>设置新的年龄</button>
@@ -69,7 +75,7 @@ const Login = (props) => {
         <ageContext.Provider value={{state: {age}, dispatch: ageDispatch}}>
             <ItemAge/>
         </ageContext.Provider>
-    </div>
+    </Fragment>
 }
 
 export default Login

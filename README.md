@@ -124,5 +124,7 @@ npm run dev
 * react-router-config会把context传入到有些路由的组件，但是子组件是没有路由的所以context需要从父组件传递下去
 
 
-
+### 定制每个页面的title和description
+* react-Helmet
+* npm install react-helmet --save
 
