@@ -16,8 +16,10 @@ const clientConfig = {
                 loader: 'css-loader',
                 options: {
                     importLoaders: 1,
-                    modules: true,
-                    // localIdentName: '[name]_[local]_[hash:base64:5]',
+                    modules: {
+                        localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                    },
+                    
                 }
             }],
         }]
