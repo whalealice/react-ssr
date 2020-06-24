@@ -13,18 +13,29 @@ const serverConfig = {
     },
     externals: [nodeExternals()],
     module: {
-        rules: [{
-            test: /\.css?$/,
-            use: ['isomorphic-style-loader',{
-                loader: 'css-loader',
-                options: {
-                    importLoaders: 1,
-                    modules: {
-                        localIdentName: '[path][name]__[local]--[hash:base64:5]',
-                    },
-                }
-            }],
-        }]
+        rules: [
+            {
+                test: /\.css?$/,
+                use: ['isomorphic-style-loader', {
+                    loader: 'css-loader',
+                    options: {
+                        importLoaders: 1,
+                        modules: {
+                            localIdentName: '[name]_[local]_[hash:base64:5]',
+                        },
+                    }
+                }],
+            },
+            // {
+            //     test: /\.(png|jpeg|jpg|gif|svg)?$/,
+            //     loader: 'url-loader',
+            //     options: {
+            //         limit: 8000,
+            //         outputPath: '../build/',  // 图片资源输出路径
+            //         publicPath: '/'
+            //     }
+            // }
+        ]
     }
 }
 

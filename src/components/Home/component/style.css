@@ -2,3 +2,14 @@
     background: red;
     margin-top: 50px;
 }
+.img{
+    display: block;
+    width: 300px;
+    height: 200px;
+    background-image: url('./../../../img/app.jpg');
+}
+.img1{
+    display: block;
+    width: 300px;
+    height: 200px;
+}

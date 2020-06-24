@@ -10,19 +10,29 @@ const clientConfig = {
         path: Path.resolve(__dirname, 'public')
     },
     module: {
-        rules: [{
-            test: /\.css?$/,
-            use: ['style-loader',{
-                loader: 'css-loader',
-                options: {
-                    importLoaders: 1,
-                    modules: {
-                        localIdentName: '[path][name]__[local]--[hash:base64:5]',
-                    },
-                    
-                }
-            }],
-        }]
+        rules: [
+            {
+                test: /\.css?$/,
+                use: ['style-loader', {
+                    loader: 'css-loader',
+                    options: {
+                        importLoaders: 1,
+                        modules: {
+                            localIdentName: '[name]_[local]_[hash:base64:5]',
+                        },
+
+                    }
+                },],
+            },
+            // {
+            //     test: /\.(png|jpg|gif)$/,
+            //     use: [
+            //         {
+            //             loader: 'file-loader',
+            //         }
+            //     ]
+            // }
+        ]
     }
 }
 

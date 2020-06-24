@@ -38,7 +38,7 @@ npm run dev
 ### express static中间件加载静态文件
 * 将静态文件目录设置为：项目根目录+/public
 * app.use(express.static(__dirname + '/public'));
-* 或者
+或者
 * app.use(express.static(path.join(__dirname, 'public')));
 
 * app.use(express.static('public')); // 发现加载静态文件就去根目录下的public文件里面找
@@ -128,3 +128,5 @@ npm run dev
 * react-Helmet
 * npm install react-helmet --save
 
+## img
+* client使用file-loader

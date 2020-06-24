@@ -11,7 +11,6 @@ import { getStore } from '../store/index'
 import routes from '../router'
 import { render } from './utils'
 
-
 const app = express();
 app.use(express.static('public')); // 发现加载静态文件就去根目录下的public文件里面找
 app.use('/api', proxy('http://route.showapi.com', {

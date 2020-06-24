@@ -6,6 +6,8 @@ import { Helmet } from 'react-helmet'
 import { exchange, getHomeList, changeLogin } from '../state/action'
 import styles from './style.css'
 import withStyles from '../../hooks/withStyles'
+const img  = require('@/img/app.jpg')
+console.log('++++++',img)
 
 const Home = (props) => {
     withStyles(props, styles)
@@ -37,6 +39,8 @@ const Home = (props) => {
             <button onClick={() => {
                 changeLogin(false)
             }}>修改login</button>
+            <div className={styles.img}></div>
+            <img className={styles.img1} src={require('./../../../img/app.jpg')}/>
         </Fragment>
     )
 }

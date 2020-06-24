@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/whalealice/reactserver#readme",
   "dependencies": {
+    "asset-require-hook": "^1.2.0",
     "axios": "^0.19.2",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
@@ -44,9 +45,11 @@
   },
   "devDependencies": {
     "css-loader": "^3.5.3",
+    "file-loader": "^6.0.0",
     "immutable": "^4.0.0-rc.12",
     "isomorphic-style-loader": "^5.1.0",
     "style-loader": "^1.2.1",
+    "url-loader": "^4.1.0",
     "webpack-cli": "^3.3.11"
   }
 }
