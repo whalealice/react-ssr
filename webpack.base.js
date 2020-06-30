@@ -1,3 +1,5 @@
+const Path = require('path')
+
 module.exports = {
     resolve: {
         // 设置别名
@@ -18,10 +20,13 @@ module.exports = {
                 },
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
-                use: ['file-loader']
+                test: /\.(png|jpeg|jpg|gif|svg)?$/,
+                loader: 'url-loader',
             },
-
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                use: 'file-loader',
+            },
         ]
-    }
+    },
 }

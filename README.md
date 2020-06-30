@@ -27,6 +27,7 @@ npm run dev
 * "dev:start": "nodemon --watch  build --exec node \"./build/bundle.js\"",
 * "dev:build": "webpack --config webpack.server.js --watch"
 * 执行 npm run dev 的时候同时执行以dev:开头的所有命令
+* --parallel 多个命令并行
 
 ## 同构 - react+服务器端渲染
 * 服务器端执行react代码，js事件是没法渲染出来
@@ -128,5 +129,3 @@ npm run dev
 * react-Helmet
 * npm install react-helmet --save
 
-## img
-* client使用file-loader

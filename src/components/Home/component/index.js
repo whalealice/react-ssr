@@ -4,10 +4,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet'
 import { exchange, getHomeList, changeLogin } from '../state/action'
-import styles from './style.css'
+// import styles from './style.css'
+import styles from './styles.less'
 import withStyles from '../../hooks/withStyles'
-const img  = require('@/img/app.jpg')
-console.log('++++++',img)
+import imgAvatar from '../assets/app.jpg'
 
 const Home = (props) => {
     withStyles(props, styles)
@@ -16,8 +16,8 @@ const Home = (props) => {
     useEffect(() => {
         getHomeList()
     }, [])
-
     return (
+        <div className={styles.wrap}>
         <Fragment>
             <Helmet>
                 <title>JOJO学习ssr网站-丰富多彩的咨询</title>
@@ -39,9 +39,9 @@ const Home = (props) => {
             <button onClick={() => {
                 changeLogin(false)
             }}>修改login</button>
-            <div className={styles.img}></div>
-            <img className={styles.img1} src={require('./../../../img/app.jpg')}/>
+            <img className={styles.img1} src={imgAvatar}/>
         </Fragment>
+        </div>
     )
 }
 Home.loadData = (store) => {

@@ -1,15 +1,12 @@
 // es modules语法
-// const express = require('express')
-// const path = require('path'); //系统路径模块
-// const fs = require('fs'); //文件模块
-// const Home = require('./src/Home')
-
 import express from 'express'
 import proxy from 'express-http-proxy'
 import { matchRoutes } from "react-router-config";
 import { getStore } from '../store/index'
 import routes from '../router'
 import { render } from './utils'
+
+
 
 const app = express();
 app.use(express.static('public')); // 发现加载静态文件就去根目录下的public文件里面找
@@ -54,7 +51,6 @@ app.get('*', (req, res) => {
     Promise.all(promises).then(() => {
         const context = {css:[]}
         const html = render(store, routes, req, context)
-        console.log('context',context)
         if (context.action === 'REPLACE') {
             res.redirect(301, context.url)
         } else if (context.NOT_FOUND) {

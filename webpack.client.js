@@ -12,26 +12,17 @@ const clientConfig = {
     module: {
         rules: [
             {
-                test: /\.css?$/,
-                use: ['style-loader', {
+                test: /\.(css|less)$/,
+                use: ['style-loader',{
                     loader: 'css-loader',
                     options: {
-                        importLoaders: 1,
+                        importLoaders: 2,
                         modules: {
                             localIdentName: '[name]_[local]_[hash:base64:5]',
                         },
-
                     }
-                },],
+                }, 'less-loader', 'postcss-loader'],
             },
-            // {
-            //     test: /\.(png|jpg|gif)$/,
-            //     use: [
-            //         {
-            //             loader: 'file-loader',
-            //         }
-            //     ]
-            // }
         ]
     }
 }

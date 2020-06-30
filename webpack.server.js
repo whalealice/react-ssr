@@ -15,26 +15,19 @@ const serverConfig = {
     module: {
         rules: [
             {
-                test: /\.css?$/,
+                test: /\.(css|less)$/,
                 use: ['isomorphic-style-loader', {
                     loader: 'css-loader',
                     options: {
-                        importLoaders: 1,
-                        modules: {
+                        // 一个文件在引入之前先执行几个loaders
+                        importLoaders: 2, // 0 => 无 loader(默认); 1 => postcss-loader; 2 => postcss-loader, sass-loader
+                        modules: { // 开启css模块化
                             localIdentName: '[name]_[local]_[hash:base64:5]',
                         },
                     }
-                }],
+                }, 'less-loader', 'postcss-loader' ],
             },
-            // {
-            //     test: /\.(png|jpeg|jpg|gif|svg)?$/,
-            //     loader: 'url-loader',
-            //     options: {
-            //         limit: 8000,
-            //         outputPath: '../build/',  // 图片资源输出路径
-            //         publicPath: '/'
-            //     }
-            // }
+
         ]
     }
 }

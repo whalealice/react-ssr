@@ -1,22 +1,18 @@
-import React, {Component, useReducer, useState, useContext} from 'react'
+import React, { Component, useReducer, useState, useContext } from 'react'
 import { Redirect } from 'react-router-dom'
+import styles from './styles.less'
 
-class Main extends Component {
-    constructor() {
-      super();
-      this.state = {
-        val: 0,
-        isLogin: false
-      };
-    }
-    
-    render() {
-      if(!this.state.isLogin){
-        return <Redirect to='/'/>
-    }
-      return <div>
-          1111
-      </div>;
-    }
-  };
+const arr = new Array(100)
+arr.fill(1)
+
+const Main = () => {
+  return <div className={styles.boxWrap}>
+    <div className={styles.ulWrap}>
+      {arr.map((item,index)=>{
+        return <div>{index}</div>
+      })}
+      
+    </div>
+  </div>;
+};
 export default Main
